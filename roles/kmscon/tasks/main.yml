@@ -1,9 +1,8 @@
 ---
 - name: Install kmscon packages
-  ansible.builtin.apt:
+  ansible.builtin.package:
     name: "{{ kmscon_packages }}"
     state: present
-    default_release: "{{ kmscon_default_release }}"
     update_cache: true
   become: true
 

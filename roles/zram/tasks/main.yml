@@ -1,6 +1,6 @@
 ---
 - name: Install zram packages
-  ansible.builtin.apt:
+  ansible.builtin.package:
     name: "{{ zram_packages }}"
     state: present
     update_cache: true
