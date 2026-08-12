@@ -21,6 +21,8 @@ documentation: https://github.com/my-perfect-system/mps-optimize
 homepage: https://github.com/my-perfect-system/mps-optimize
 issues: https://github.com/my-perfect-system/mps-optimize/issues
 build_ignore:
+  .ansible-lint
+  .yamllint
   - .git
   - .github
   - .gitignore
