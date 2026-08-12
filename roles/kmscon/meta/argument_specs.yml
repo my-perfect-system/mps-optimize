@@ -1,0 +1,32 @@
+---
+argument_specs:
+  main:
+    short_description: Install kmscon from trixie-backports and deploy its config
+    options:
+      kmscon_packages:
+        type: list
+        required: false
+        default:
+          - kmscon
+          - libtsm4
+        description: "Apt packages required for kmscon (typically pulled from backports)"
+      kmscon_default_release:
+        type: str
+        required: false
+        default: trixie-backports
+        description: "apt target release to use for kmscon packages"
+      kmscon_config_dir:
+        type: str
+        required: false
+        default: /etc/kmscon
+        description: "Directory where the kmscon config file is deployed"
+      kmscon_conf_src:
+        type: str
+        required: false
+        default: "{{ role_path }}/files/etc/kmscon/kmscon.conf"
+        description: "Source path for the kmscon config file (role-relative)"
+      kmscon_conf_dst:
+        type: str
+        required: false
+        default: "{{ kmscon_config_dir }}/kmscon.conf"
+        description: "Destination path for the kmscon config file"

@@ -1,0 +1,31 @@
+---
+namespace: mps
+name: optimize
+version: 0.3.0
+readme: README.md
+authors:
+  - foo <bar@baz.com>
+description: System-level performance and console optimizations
+license:
+  - GPL-3.0-or-later
+tags:
+  - linux
+  - optimize
+  - performance
+  - zram
+  - tmpfs
+  - console
+  - mps
+repository: https://github.com/my-perfect-system/mps-optimize
+documentation: https://github.com/my-perfect-system/mps-optimize
+homepage: https://github.com/my-perfect-system/mps-optimize
+issues: https://github.com/my-perfect-system/mps-optimize/issues
+build_ignore:
+  - .git
+  - .github
+  - .gitignore
+  - "*.tar.gz"
+  - .ansible
+dependencies:
+  mps.base: ">=0.1.0"
+  ansible.posix: ">=1.0.0"

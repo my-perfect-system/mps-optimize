@@ -1,0 +1,8 @@
+---
+- name: Optimize full install
+  hosts: all
+  become: true
+  roles:
+    - role: mps.optimize.zram
+    - role: mps.optimize.ramdisks
+    - role: mps.optimize.kmscon

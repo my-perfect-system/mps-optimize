@@ -1,0 +1,21 @@
+---
+galaxy_info:
+  author: foo <bar@baz.com>
+  description: "Mount volatile logs as tmpfs"
+  min_ansible_version: "2.20.0"
+  license: GPL-3.0-or-later
+  platforms:
+    - name: Debian
+      versions:
+        - trixie
+  galaxy_tags:
+    - debian
+    - debian13
+    - trixie
+    - optimize
+    - tmpfs
+    - ramdisk
+    - ssd
+    - performance
+    - mps-optimize
+dependencies: []

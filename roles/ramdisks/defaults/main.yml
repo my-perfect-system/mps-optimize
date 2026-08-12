@@ -1,0 +1,6 @@
+---
+ramdisks_mount: /var/log
+ramdisks_opts: "mode=1777,nosuid,nodev"
+ramdisks_fstab_marker: "# {mark} ANSIBLE MANAGED: tmpfs {{ ramdisks_mount }}"
+ramdisks_backup_path: /tmp/var-log-backup
+ramdisks_backup_marker: "{{ ramdisks_backup_path }}/.backup_done"

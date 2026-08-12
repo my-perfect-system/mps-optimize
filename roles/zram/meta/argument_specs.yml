@@ -1,0 +1,31 @@
+---
+argument_specs:
+  main:
+    short_description: Install zram-tools and configure /etc/default/zramswap
+    options:
+      zram_packages:
+        type: list
+        required: false
+        default:
+          - zram-tools
+        description: "Apt packages required for zram swap"
+      zram_percentage:
+        type: int
+        required: false
+        default: 10
+        description: "Percentage of total RAM to use for zram swap"
+      zram_config_path:
+        type: str
+        required: false
+        default: /etc/default/zramswap
+        description: "Path to the zramswap configuration file"
+      zram_service:
+        type: str
+        required: false
+        default: zramswap
+        description: "systemd service name for zramswap"
+      zram_algo:
+        type: str
+        required: false
+        default: zstd
+        description: "Compression algorithm for zram (e.g. zstd, lz4, lzo)"

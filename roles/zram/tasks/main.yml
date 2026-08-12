@@ -1,0 +1,22 @@
+---
+- name: "OPTIMIZE_ZRAM - Install zram-tools package"
+  ansible.builtin.apt:
+    name: "{{ zram_packages }}"
+    state: present
+    update_cache: true
+  become: true
+
+- name: "OPTIMIZE_ZRAM - Configure ALGO and PERCENT in /etc/default/zramswap"
+  ansible.builtin.blockinfile:
+    path: "{{ zram_config_path }}"
+    marker: "# {mark} ANSIBLE MANAGED: zramswap config"
+    block: "ALGO={{ zram_algo }}\nPERCENT={{ zram_percentage }}"
+    insertafter: EOF
+  become: true
+
+- name: "OPTIMIZE_ZRAM - Restart zramswap service to apply config"
+  ansible.builtin.systemd:
+    name: "{{ zram_service }}"
+    state: restarted
+    daemon_reload: true
+  become: true

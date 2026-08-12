@@ -1,0 +1,7 @@
+---
+zram_packages:
+  - zram-tools
+zram_percentage: 10
+zram_config_path: /etc/default/zramswap
+zram_service: zramswap
+zram_algo: zstd

@@ -1,0 +1,8 @@
+---
+kmscon_packages:
+  - kmscon
+  - libtsm4
+kmscon_default_release: trixie-backports
+kmscon_config_dir: /etc/kmscon
+kmscon_conf_src: "{{ role_path }}/files/etc/kmscon/kmscon.conf"
+kmscon_conf_dst: "{{ kmscon_config_dir }}/kmscon.conf"

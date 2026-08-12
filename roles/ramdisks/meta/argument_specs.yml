@@ -1,0 +1,30 @@
+---
+argument_specs:
+  main:
+    short_description: Mount a path as tmpfs with backup/restore
+    options:
+      ramdisks_mount:
+        type: str
+        required: false
+        default: /var/log
+        description: "Absolute path to mount as tmpfs"
+      ramdisks_opts:
+        type: str
+        required: false
+        default: "mode=1777,nosuid,nodev"
+        description: "Mount options for the tmpfs entry"
+      ramdisks_fstab_marker:
+        type: str
+        required: false
+        default: "# {mark} ANSIBLE MANAGED: tmpfs {{ ramdisks_mount }}"
+        description: "blockinfile marker for the fstab entry"
+      ramdisks_backup_path:
+        type: str
+        required: false
+        default: /tmp/var-log-backup
+        description: "Where to back up existing contents before mounting tmpfs"
+      ramdisks_backup_marker:
+        type: str
+        required: false
+        default: "{{ ramdisks_backup_path }}/.backup_done"
+        description: "Marker file under ramdisks_backup_path; its presence indicates backup completed"
