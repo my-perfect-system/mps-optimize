@@ -1,6 +1,0 @@
----
-- name: Optimize base install
-  hosts: all
-  become: true
-  roles:
-    - role: mps.optimize.zram
