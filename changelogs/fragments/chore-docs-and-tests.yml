@@ -1,0 +1,11 @@
+---
+# Fragment for the refactor pass.
+# Compiles into changelogs/changelog.yaml at release time.
+minor_changes:
+  - |
+    Per-role READMEs auto-generated from argument_specs.yml + defaults/main.yml; meta/main.yml and argument_specs.yml cross-linked from each role README; collection README links every role.
+  - |
+    Linting configs (.ansible-lint, .yamllint) added; galaxy.yml's `build_ignore` excludes them from published tarballs.
+  - |
+    Molecule smoke-test scenarios for every role using `geerlingguy/docker-debian13-ansible:latest`.
+
