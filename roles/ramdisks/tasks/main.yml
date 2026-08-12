@@ -1,6 +1,6 @@
 ---
-- name: "OPTIMIZE_RAMDISKS_MAIN - Compute mount-state facts"
+- name: Gather ramdisks facts
   ansible.builtin.include_tasks: facts.yml
 
-- name: "OPTIMIZE_RAMDISKS_MAIN - Convert ramdisks_mount to tmpfs with backup/restore"
+- name: Convert ramdisks to tmpfs
   ansible.builtin.include_tasks: convert.yml

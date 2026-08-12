@@ -1,20 +1,20 @@
 ---
-- name: "OPTIMIZE_RAMDISKS - Convert ramdisks_mount to tmpfs with backup/restore"
+- name: Convert ramdisks mount to tmpfs when needed
   become: true
   when: not ramdisks_is_tmpfs | bool
   block:
-    - name: "OPTIMIZE_RAMDISKS - Ensure backup dir exists"
+    - name: Ensure backup dir exists
       ansible.builtin.file:
         path: "{{ ramdisks_backup_path }}"
         state: directory
         mode: "0700"
 
-    - name: "OPTIMIZE_RAMDISKS - Check if backup marker exists"
+    - name: Check if backup marker exists
       ansible.builtin.stat:
         path: "{{ ramdisks_backup_marker }}"
       register: ramdisks_backup_done
 
-    - name: "OPTIMIZE_RAMDISKS - Backup ramdisks_mount contents"
+    - name: Backup ramdisks_mount contents
       ansible.builtin.copy:
         src: "{{ ramdisks_mount }}/"
         dest: "{{ ramdisks_backup_path }}/"
@@ -22,19 +22,19 @@
         mode: preserve
       when: not ramdisks_backup_done.stat.exists
 
-    - name: "OPTIMIZE_RAMDISKS - Mark backup as done"
+    - name: Mark backup as done
       ansible.builtin.file:
         path: "{{ ramdisks_backup_marker }}"
         state: touch
         mode: "0644"
       when: not ramdisks_backup_done.stat.exists
 
-    - name: "OPTIMIZE_RAMDISKS - Unmount ramdisks_mount if mounted"
+    - name: Unmount ramdisks_mount if mounted
       ansible.posix.mount:
         path: "{{ ramdisks_mount }}"
         state: unmounted
 
-    - name: "OPTIMIZE_RAMDISKS - Ensure tmpfs entry in fstab"
+    - name: Ensure tmpfs entry in fstab
       ansible.builtin.blockinfile:
         path: /etc/fstab
         marker: "{{ ramdisks_fstab_marker }}"
@@ -42,7 +42,7 @@
           # Mount ramdisks_mount as tmpfs (volatile)
           tmpfs {{ ramdisks_mount }} tmpfs {{ ramdisks_opts }} 0 0
 
-    - name: "OPTIMIZE_RAMDISKS - Recreate ramdisks_mount directory"
+    - name: Recreate ramdisks_mount directory
       ansible.builtin.file:
         path: "{{ ramdisks_mount }}"
         state: directory
@@ -50,7 +50,7 @@
         group: root
         mode: "1777"
 
-    - name: "OPTIMIZE_RAMDISKS - Mount tmpfs at ramdisks_mount"
+    - name: Mount tmpfs at ramdisks_mount
       ansible.posix.mount:
         path: "{{ ramdisks_mount }}"
         src: tmpfs
@@ -58,14 +58,14 @@
         opts: "{{ ramdisks_opts }}"
         state: mounted
 
-    - name: "OPTIMIZE_RAMDISKS - Restore backed-up contents"
+    - name: Restore backed-up contents
       ansible.builtin.copy:
         src: "{{ ramdisks_backup_path }}/"
         dest: "{{ ramdisks_mount }}/"
         remote_src: true
         mode: preserve
 
-    - name: "OPTIMIZE_RAMDISKS - Ensure correct ownership of restored contents"
+    - name: Ensure correct ownership of restored contents
       ansible.builtin.file:
         path: "{{ ramdisks_mount }}"
         state: directory
@@ -73,7 +73,7 @@
         owner: root
         group: root
 
-    - name: "OPTIMIZE_RAMDISKS - Restart systemd-journald"
+    - name: Restart systemd-journald
       ansible.builtin.systemd:
         name: systemd-journald
         state: restarted

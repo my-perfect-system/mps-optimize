@@ -1,10 +1,10 @@
 ---
-- name: "OPTIMIZE_RAMDISKS - Check current mount state of ramdisks_mount"
+- name: Detect filesystem type of ramdisks mount
   ansible.builtin.command: findmnt -n -o FSTYPE {{ ramdisks_mount }}
   register: ramdisks_fstype
   changed_when: false
   failed_when: false
 
-- name: "OPTIMIZE_RAMDISKS - Set tmpfs flag"
+- name: Set ramdisks_is_tmpfs fact
   ansible.builtin.set_fact:
     ramdisks_is_tmpfs: "{{ ramdisks_fstype.stdout == 'tmpfs' }}"

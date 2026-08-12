@@ -1,5 +1,5 @@
 ---
-- name: "OPTIMIZE_KMSCON - Install kmscon packages"
+- name: Install kmscon packages
   ansible.builtin.apt:
     name: "{{ kmscon_packages }}"
     state: present
@@ -7,7 +7,7 @@
     update_cache: true
   become: true
 
-- name: "OPTIMIZE_KMSCON - Ensure kmscon_config_dir exists"
+- name: Ensure kmscon config directory exists
   ansible.builtin.file:
     path: "{{ kmscon_config_dir }}"
     state: directory
@@ -16,7 +16,7 @@
     mode: "0755"
   become: true
 
-- name: "OPTIMIZE_KMSCON - Deploy kmscon.conf"
+- name: Deploy kmscon configuration file
   ansible.builtin.copy:
     src: "{{ kmscon_conf_src }}"
     dest: "{{ kmscon_conf_dst }}"

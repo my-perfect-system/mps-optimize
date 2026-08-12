@@ -1,12 +1,12 @@
 ---
-- name: "OPTIMIZE_ZRAM - Install zram-tools package"
+- name: Install zram packages
   ansible.builtin.apt:
     name: "{{ zram_packages }}"
     state: present
     update_cache: true
   become: true
 
-- name: "OPTIMIZE_ZRAM - Configure ALGO and PERCENT in /etc/default/zramswap"
+- name: Configure zram swap device
   ansible.builtin.blockinfile:
     path: "{{ zram_config_path }}"
     marker: "# {mark} ANSIBLE MANAGED: zramswap config"
@@ -14,7 +14,7 @@
     insertafter: EOF
   become: true
 
-- name: "OPTIMIZE_ZRAM - Restart zramswap service to apply config"
+- name: Restart zram service
   ansible.builtin.systemd:
     name: "{{ zram_service }}"
     state: restarted
