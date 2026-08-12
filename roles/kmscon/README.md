@@ -1,10 +1,10 @@
 ---
-namespace: mps
+namespace: odem
 collection: optimize
 role: kmscon
 ---
 
-# `mps.optimize.kmscon`
+# `odem.optimize.kmscon`
 
 Install kmscon from trixie-backports and deploy its config
 
@@ -27,7 +27,7 @@ None.
 ```yaml
 - hosts: all
   roles:
-    - mps.optimize.kmscon
+    - odem.optimize.kmscon
 ```
 
 ## Role metadata

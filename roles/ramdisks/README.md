@@ -1,10 +1,10 @@
 ---
-namespace: mps
+namespace: odem
 collection: optimize
 role: ramdisks
 ---
 
-# `mps.optimize.ramdisks`
+# `odem.optimize.ramdisks`
 
 Mount a path as tmpfs with backup/restore
 
@@ -27,7 +27,7 @@ None.
 ```yaml
 - hosts: all
   roles:
-    - mps.optimize.ramdisks
+    - odem.optimize.ramdisks
 ```
 
 ## Role metadata

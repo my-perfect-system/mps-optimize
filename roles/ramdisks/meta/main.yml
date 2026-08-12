@@ -17,5 +17,5 @@ galaxy_info:
     - ramdisk
     - ssd
     - performance
-    - mps-optimize
+    - odem-optimize
 dependencies: []

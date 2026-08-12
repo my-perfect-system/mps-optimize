@@ -16,5 +16,5 @@ galaxy_info:
     - console
     - kmscon
     - backports
-    - mps-optimize
+    - odem-optimize
 dependencies: []

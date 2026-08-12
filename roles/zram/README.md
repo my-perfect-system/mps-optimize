@@ -1,10 +1,10 @@
 ---
-namespace: mps
+namespace: odem
 collection: optimize
 role: zram
 ---
 
-# `mps.optimize.zram`
+# `odem.optimize.zram`
 
 Install zram-tools and configure /etc/default/zramswap
 
@@ -27,7 +27,7 @@ None.
 ```yaml
 - hosts: all
   roles:
-    - mps.optimize.zram
+    - odem.optimize.zram
 ```
 
 ## Role metadata
