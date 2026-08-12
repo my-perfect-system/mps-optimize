@@ -16,9 +16,9 @@ See [`galaxy.yml`](galaxy.yml) for the canonical values.
 
 | Role | Purpose |
 |---|---|
-| `mps.optimize.kmscon` | Userspace console (replaces kernel `vt`). |
-| `mps.optimize.ramdisks` | tmpfs ramdisks — backup → convert → restore with idempotent marker file. |
-| `mps.optimize.zram` | zram-generator config + restart. |
+| [`mps.optimize.kmscon`](roles/kmscon/README.md) | Userspace console (replaces kernel `vt`). |
+| [`mps.optimize.ramdisks`](roles/ramdisks/README.md) | tmpfs ramdisks — backup → convert → restore with idempotent marker file. |
+| [`mps.optimize.zram`](roles/zram/README.md) | zram-generator config + restart. |
 
 ## Installation
 
